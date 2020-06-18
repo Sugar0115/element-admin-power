@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <mallki text="为人民服务" href="http://www.baidu.com/"></mallki>
-    <span class="black-btn">为人民服务</span>
+    <span v-wave="waveColor" class="black-btn">为人民服务</span>
     <drop-down :items="articleList" title="系列文章"></drop-down>
   </div>
 </template>
@@ -10,11 +10,12 @@
 import { mapGetters } from "vuex";
 import mallki from "@/components/mallki.vue";
 import dropDown from "@/components/dropdown.vue";
-
+import wave from "@/assets/js/waves.js";
 export default {
   name: "Dashboard",
   data() {
     return {
+      waveColor: "rgba(0,0,0,.4)",
       articleList: [
         {
           title: "基础篇",
@@ -45,6 +46,9 @@ export default {
   },
   computed: {
     ...mapGetters(["name"])
+  },
+  directives: {
+    wave
   },
   components: {
     mallki,

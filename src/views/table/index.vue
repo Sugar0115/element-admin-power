@@ -14,7 +14,9 @@
         <template slot-scope="scope">{{ scope.$index }}</template>
       </el-table-column>
       <el-table-column label="Title">
-        <template slot-scope="scope">{{ scope.row.title }}</template>
+        <template slot-scope="scope">
+          <span v-clipboard:copy="scope.row.title" v-clipboard:success="copy">{{ scope.row.title }}</span>
+        </template>
       </el-table-column>
       <el-table-column label="Author" width="110" align="center">
         <template slot-scope="scope">
@@ -65,6 +67,12 @@ export default {
     this.getList();
   },
   methods: {
+    copy() {
+      this.$message({
+        message: "复制成功",
+        type: "success"
+      });
+    },
     async getList() {
       this.listLoading = true;
       getList().then(response => {
