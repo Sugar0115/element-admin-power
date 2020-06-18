@@ -1,0 +1,239 @@
+// 蓝色
+.blue-btn {
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #66b1ff;
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.blue-btn:hover {
+    background-color: #fff;
+    border: transparent;
+    color: #66b1ff;
+    &:after,
+    &:before {
+        width: 100%;
+    }
+}
+
+.blue-btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #66b1ff;
+}
+
+.blue-btn:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #66b1ff;
+}
+
+//   红色
+.red-btn {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #E65D6E;
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.red-btn:hover {
+    background-color: #fff;
+    border: transparent;
+    color: #E65D6E;
+    &:after,
+    &:before {
+        width: 100%;
+    }
+}
+
+.red-btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #E65D6E;
+}
+
+.red-btn:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #E65D6E;
+}
+
+//   绿色
+.green-btn {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #30B08F;
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.green-btn:hover {
+    background-color: #fff;
+    border: transparent;
+    color: #30B08F;
+    &:after,
+    &:before {
+        width: 100%;
+    }
+}
+
+.green-btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #30B08F;
+}
+
+.green-btn:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #30B08F;
+}
+
+//   警告色
+.yellow-btn {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FEC171;
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.yellow-btn:hover {
+    background-color: #fff;
+    border: transparent;
+    color: #FEC171;
+    &:after,
+    &:before {
+        width: 100%;
+    }
+}
+
+.yellow-btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #FEC171;
+}
+
+.yellow-btn:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #FEC171;
+}
+
+//   黑色
+.black-btn {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #324157;
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.black-btn:hover {
+    background-color: #fff;
+    border: transparent;
+    color: #324157;
+    &::after,
+    &::before {
+        width: 100%;
+    }
+}
+
+.black-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #324157;
+}
+
+.black-btn:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2px;
+    width: 0px;
+    transition: all 0.5s ease-in-out;
+    background-color: #324157;
+}

@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
     <el-table
+      id="list"
+      ref="dragTable"
       v-loading="listLoading"
       :data="list"
       element-loading-text="Loading"
@@ -9,14 +11,10 @@
       highlight-current-row
     >
       <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
+        <template slot-scope="scope">{{ scope.$index }}</template>
       </el-table-column>
       <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{ scope.row.title }}
-        </template>
+        <template slot-scope="scope">{{ scope.row.title }}</template>
       </el-table-column>
       <el-table-column label="Author" width="110" align="center">
         <template slot-scope="scope">
@@ -24,9 +22,7 @@
         </template>
       </el-table-column>
       <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
+        <template slot-scope="scope">{{ scope.row.pageviews }}</template>
       </el-table-column>
       <el-table-column class-name="status-col" label="Status" width="110" align="center">
         <template slot-scope="scope">
@@ -35,7 +31,7 @@
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="Display_time" width="200">
         <template slot-scope="scope">
-          <i class="el-icon-time" />
+          <i class="el-icon-time"/>
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
@@ -44,36 +40,73 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
-
+import { getList } from "@/api/table";
+import Sortable from "sortablejs";
 export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
+        published: "success",
+        draft: "gray",
+        deleted: "danger"
+      };
+      return statusMap[status];
     }
   },
   data() {
     return {
       list: null,
-      listLoading: true
-    }
+      listLoading: true,
+      oldList: [],
+      newList: []
+    };
   },
   created() {
-    this.fetchData()
+    this.getList();
   },
   methods: {
-    fetchData() {
-      this.listLoading = true
+    async getList() {
+      this.listLoading = true;
       getList().then(response => {
-        this.list = response.data.items
-        this.listLoading = false
-      })
+        this.list = response.data.items;
+        this.listLoading = false;
+        this.oldList = this.list.map(v => v.id);
+        this.newList = this.oldList.slice();
+        this.$nextTick(() => {
+          this.setSort();
+        });
+      });
+    },
+    setSort() {
+      const el = this.$refs.dragTable.$el.querySelectorAll(
+        ".el-table__body-wrapper > table > tbody"
+      )[0];
+      this.sortable = Sortable.create(el, {
+        ghostClass: "sortable-ghost", // Class name for the drop placeholder,
+        setData: function(dataTransfer) {
+          // to avoid Firefox bug
+          // Detail see : https://github.com/RubaXa/Sortable/issues/1012
+          dataTransfer.setData("Text", "");
+        },
+        onEnd: evt => {
+          const targetRow = this.list.splice(evt.oldIndex, 1)[0];
+          this.list.splice(evt.newIndex, 0, targetRow);
+
+          // for show the changes, you can delete in you code
+          const tempIndex = this.newList.splice(evt.oldIndex, 1)[0];
+          this.newList.splice(evt.newIndex, 0, tempIndex);
+        }
+      });
     }
-  }
-}
+  },
+  mounted() {}
+};
 </script>
+<style lang="scss" >
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
+}
+</style>
+
