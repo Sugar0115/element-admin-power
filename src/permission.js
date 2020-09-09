@@ -17,7 +17,7 @@ router.beforeEach(async(to, from, next) => {
     // document.title = getPageTitle(to.meta.title)
 
     // determine whether the user has logged in
-    const hasToken = getToken()
+    const hasToken = getToken('obj')
 
     if (hasToken) {
         if (to.path === '/login') {

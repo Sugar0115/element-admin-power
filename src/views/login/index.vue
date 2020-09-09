@@ -63,13 +63,12 @@
 </template>
 
 <script>
-import { validUsername } from "@/utils/validate";
-
+import { setToken } from "@/utils/myAuth";
 export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
+      if (value == "") {
         callback(new Error("Please enter the correct user name"));
       } else {
         callback();
@@ -120,23 +119,13 @@ export default {
       });
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("user/login", this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || "/" });
-              this.loading = false;
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      setToken("obj", { name: "amdin" });
+      this.$router.push("/");
+      // this.$refs.loginForm.validate(valid => {
+
+      //   if (valid) {
+      //   }
+      // });
     }
   }
 };
