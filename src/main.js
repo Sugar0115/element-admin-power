@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
     // set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI)
 Vue.prototype.$message = resetMessage;
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
