@@ -39,7 +39,7 @@ module.exports = {
         },
         proxy: {
             '/api': {
-                target: '<url>',
+                target: '',
                 pathRewrite: {
 
                 },
